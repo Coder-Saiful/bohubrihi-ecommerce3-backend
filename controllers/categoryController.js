@@ -29,7 +29,7 @@ module.exports.getCategories = async (req, res) => {
             const limit = req.query.limit ? parseInt(req.query.limit) : 0;
             const skip = (page - 1) * limit;
             const totalData = await Category.count();
-            let totalPage = totalData / limit;
+            let totalPage = Math.ceil(totalData / limit);
             if (limit === 0) {
                 totalPage = 1;
             }
