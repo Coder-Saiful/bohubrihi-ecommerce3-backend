@@ -25,9 +25,25 @@ module.exports.createCategory = async (req, res) => {
 module.exports.getCategories = async (req, res) => {
     try {
         if (await Category.count() > 0) {
+            const page = req.query.page ? parseInt(req.query.page) : 1;
+            const limit = req.query.limit ? parseInt(req.query.limit) : 0;
+            const skip = (page - 1) * limit;
+            const totalData = await Category.count();
+            let totalPage = totalData / limit;
+            if (limit === 0) {
+                totalPage = 1;
+            }
+            // console.log('Page: ', page);
+            // console.log('Limit: ', limit);
+            // console.log('Skip: ', skip);
+            // console.log('Total Data: ', totalData);
+            // console.log('Total Page: ', totalPage);
+        
             const categories = await Category.find()
-                .sort({ name: 1 });
-            return res.status(200).send(categories);
+                .sort({ name: 1 })
+                .limit(limit)
+                .skip(skip);
+            return res.status(200).send({totalData: totalData, totalPage: totalPage, data: categories});
         } else {
             return res.status(400).send({ message: "No category available!" });
         }
