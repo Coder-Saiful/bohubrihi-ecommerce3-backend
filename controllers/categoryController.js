@@ -46,7 +46,7 @@ module.exports.getCategories = async (req, res) => {
                 .limit(limit)
                 .skip(skip)
                 .sort({[sortBy]: order});
-            return res.status(200).send({totalData: totalData, totalPage: totalPage, data: categories});
+            return res.status(200).send({totalData: totalData, totalPage: totalPage, skip: skip, data: categories});
         } else {
             return res.status(400).send({ message: "No category available!" });
         }
