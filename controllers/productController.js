@@ -1,4 +1,5 @@
 const { Product, validate } = require('../models/product');
+const {Category} = require('../models/category');
 const _ = require('lodash');
 const formidable = require('formidable');
 const fs = require('fs');
@@ -205,4 +206,22 @@ module.exports.filterProducts = async (req, res) => {
         .limit(limit)
         .skip(skip);
     return res.status(200).send(products);
+}
+
+module.exports.filterByCategory = async (req, res) => {
+    try {
+        const categoryName = req.body.categoryName;
+        const category = await Category.findOne({name: categoryName});
+        const products = await Product.find({category: category._id})
+            .select({photo: 0})
+            .populate('category', 'name')
+            .sort({createdAt: -1});
+        if (products.length > 0) {
+            return res.status(200).send({products});
+        } else {
+            return res.status(200).send({message: "No product available!"});
+        }
+    } catch (error) {
+        return res.status(400).send({message: "Failed to fetch products!"});
+    }
 }
