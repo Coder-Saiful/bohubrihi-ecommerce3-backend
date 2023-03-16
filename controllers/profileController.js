@@ -1,4 +1,4 @@
-const {Profile} = require('mongoose');
+const {Profile} = require('../models/profile');
 const _ = require('lodash');
 
 // get profile info
@@ -22,8 +22,8 @@ module.exports.setProfile = async (req, res) => {
             return res.status(200).send({message: "Your profile updated successfully!"});
         } else {
             profile = new Profile(userProfile);
-            await Profile.save();
-            return res.status(200).send({message: "Your profile info saved successfully!"});
+            await profile.save();
+            return res.status(201).send({message: "Your profile info saved successfully!"});
         }
     } catch (error) {
         return res.status(400).send({message: "An error occured."});
