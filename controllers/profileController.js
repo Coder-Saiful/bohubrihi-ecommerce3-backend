@@ -6,7 +6,6 @@ module.exports.getProfile = async (req, res) => {
     try {
         const profile = await Profile.findOne({user: req.user._id})
             .populate('user', 'name');
-        console.log(profile)
         return res.status(200).send(profile);
     } catch (error) {
         return res.status(400).send({message: "An error occured."});
@@ -30,7 +29,6 @@ module.exports.setProfile = async (req, res) => {
             return res.status(201).send({message: "Your profile info saved successfully!"});
         }
     } catch (error) {
-        console.log(error)
         return res.status(400).send({message: "An error occured."});
     }
 }
