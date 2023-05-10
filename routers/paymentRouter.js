@@ -1,5 +1,6 @@
 const {
-    initPayment, ipn
+    initPayment,
+    ipn
 } = require('../controllers/paymentController');
 const authorize = require('../middlewares/authorize');
 
@@ -11,5 +12,19 @@ router.route('/')
 router.route('/ipn')
     .post(ipn);
 
+router.route('/success')
+    .post((req, res) => {
+        res.redirect('http://localhost:3000/payment/success');
+    });
+
+router.route('/cancel')
+    .post(() => {
+        res.redirect('http://localhost:3000/payment/cancel');
+    });
+
+router.route('/fail')
+    .post(() => {
+        res.redirect('http://localhost:3000/payment/fail');
+    });
 
 module.exports = router;
