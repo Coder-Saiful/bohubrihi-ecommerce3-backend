@@ -38,7 +38,7 @@ module.exports.initPayment = async (req, res) => {
         total_amount: total_amount, // Number field
         currency: "BDT", // Must be three character string
         tran_id: tran_id, // Unique Transaction id
-        emi_option: 0, // 1 or 0
+        emi_option: 0 // 1 or 0
     });
 
     // Set customer info
@@ -77,4 +77,8 @@ module.exports.initPayment = async (req, res) => {
 
     const response = await payment.paymentInit();
     return res.status(200).send(response);
+}
+
+module.exports.ipn = async (req, res) => {
+    console.log(req.body)
 }
