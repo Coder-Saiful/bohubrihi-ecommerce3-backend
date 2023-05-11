@@ -18,12 +18,12 @@ router.route('/success')
     });
 
 router.route('/cancel')
-    .post(() => {
+    .post((req, res) => {
         res.redirect('http://localhost:3000/payment/cancel');
     });
 
 router.route('/fail')
-    .post(() => {
+    .post((req, res) => {
         res.redirect('http://localhost:3000/payment/fail');
     });
 
