@@ -12,19 +12,19 @@ router.route('/')
 router.route('/ipn')
     .post(ipn);
 
-router.route('/success')
-    .post((req, res) => {
-        res.redirect('http://localhost:3000/payment/success');
-    });
+// router.route('/success')
+//     .post((req, res) => {
+//         res.redirect('http://localhost:3000/payment/success');
+//     });
 
-router.route('/cancel')
-    .post((req, res) => {
-        res.redirect('http://localhost:3000/payment/cancel');
-    });
+// router.route('/cancel')
+//     .post((req, res) => {
+//         res.redirect('http://localhost:3000/payment/cancel');
+//     });
 
-router.route('/fail')
-    .post((req, res) => {
-        res.redirect('http://localhost:3000/payment/fail');
-    });
+// router.route('/fail')
+//     .post((req, res) => {
+//         res.redirect('http://localhost:3000/payment/fail');
+//     });
 
 module.exports = router;
