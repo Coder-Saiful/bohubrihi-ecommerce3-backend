@@ -27,9 +27,12 @@ module.exports.initPayment = async (req, res) => {
 
     // Set the urls
     payment.setUrls({
-        success: "https://bohubrihi-ecommerce3-backend.onrender.com/api/payment/success", // If payment Succeed
-        fail: "https://bohubrihi-ecommerce3-backend.onrender.com/api/payment/fail", // If payment failed
-        cancel: "https://bohubrihi-ecommerce3-backend.onrender.com/api/payment/cancel", // If user cancel payment
+        // success: "https://bohubrihi-ecommerce3-backend.onrender.com/api/payment/success", // If payment Succeed
+        // fail: "https://bohubrihi-ecommerce3-backend.onrender.com/api/payment/fail", // If payment failed
+        // cancel: "https://bohubrihi-ecommerce3-backend.onrender.com/api/payment/cancel", // If user cancel payment
+        success: "mysite.com/success",
+        fail: "mysite.com/fail",
+        cancel: "mysite.com/cancel",
         ipn: "https://bohubrihi-ecommerce3-backend.onrender.com/api/payment/ipn", // SSLCommerz will send http post request in this link
     });
 
