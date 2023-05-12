@@ -5,6 +5,7 @@ const {
 const authorize = require('../middlewares/authorize');
 
 const router = require('express').Router();
+const url = 'http://localhost:3000/payment';
 
 router.route('/')
     .get(authorize, initPayment);
@@ -14,17 +15,17 @@ router.route('/ipn')
 
 router.route('/success')
     .post((req, res) => {
-        res.redirect('http://localhost:3000/payment/success');
+        res.redirect(`${url}/success`);
     });
 
 router.route('/cancel')
     .post((req, res) => {
-        res.redirect('http://localhost:3000/payment/cancel');
+        res.redirect(`${url}/cancel`);
     });
 
 router.route('/fail')
     .post((req, res) => {
-        res.redirect('http://localhost:3000/payment/fail');
+        res.redirect(`${url}/fail`);
     });
 
 module.exports = router;
