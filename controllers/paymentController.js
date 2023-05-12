@@ -80,5 +80,5 @@ module.exports.initPayment = async (req, res) => {
 }
 
 module.exports.ipn = async (req, res) => {
-    console.log(req.body)
+    console.log('You recieved a ipn message');
 }
