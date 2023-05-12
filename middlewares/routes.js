@@ -11,8 +11,8 @@ module.exports = (app) => {
         res.setHeader("Access-Control-Allow-Credentials", "true");
         res.setHeader("Access-Control-Max-Age", "1800");
         res.setHeader("Access-Control-Allow-Headers", "content-type");
-        res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
-        res.send('Server running...');
+        res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" );
+        res.send(`<h2>Server running...</h2><h3>${req.hostname}</h3>`);
     });
     app.use('/api/user', userRouter);
     app.use('/api/category', categoryRouter);
